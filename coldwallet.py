@@ -11,6 +11,7 @@ except ImportError:
 from PIL import Image, ImageFont, ImageOps, ImageChops, ImageDraw
 import qrcode
 from bip38 import *
+from getpass import getpass
 
 def add_border(im, border_width, color):
     size = im.size
@@ -96,7 +97,12 @@ def paper_wallet(password):
 if __name__ == '__main__':
     try:
         cmd = sys.argv[1]
-        password = sys.argv[2]
+
+        if len(sys.argv) > 2 and not sys.argv[2] == "-":
+            password = sys.argv[2]
+        else:
+            password = getpass()
+
         filename = "wallet.png"
         if len(sys.argv) > 3:
             filename = sys.argv[3]
@@ -122,6 +128,8 @@ Usage:
     coldwallet.py paper <password> <filename.png>
       Generates an 8.5x11 @ 300dpi image with 8 BIP38 cold wallets
 
-    If filename is not provided, output will be to wallet.png by default
+    If filename is not provided, output will be to wallet.png by default.
+
+    If password is not provided, or is "-", it will be prompted for
 
 """

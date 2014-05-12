@@ -7,6 +7,7 @@ btc
 * qrcode
 * scrypt
 * base58
+* pycrypto
 
 Also depends on pybitcointools from github.com:vbuterin/pybitcointools.git
 
