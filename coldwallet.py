@@ -102,6 +102,10 @@ if __name__ == '__main__':
             password = sys.argv[2]
         else:
             password = getpass()
+            password2 = getpass("Confirm password:")
+            if password != password2:
+                print("Passwords don't match!")
+                exit(-1)
 
         filename = "wallet.png"
         if len(sys.argv) > 3:
